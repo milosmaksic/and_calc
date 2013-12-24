@@ -8,12 +8,19 @@
 
     // Wait for Cordova to load
     //
-    document.addEventListener("deviceready", onDeviceReady, false);
+    document.onload = onDeviceReady();
+
+    function onLoad() {
+	//alert('ready');
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+    //document.addEventListener("deviceready", onDeviceReady, false);
 
     // Cordova is ready
     //
     function onDeviceReady() {
-        navigator.geolocation.getCurrentPosition(onSuccess);
+	//alert('onDeviceReady');
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
     }
 
     // onSuccess Geolocation
